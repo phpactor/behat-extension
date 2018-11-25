@@ -2,21 +2,23 @@
 
 namespace Phpactor\Extension\Behat\Behat;
 
+use Generator;
 use Symfony\Component\Yaml\Yaml;
 
 class BehatConfig
 {
     /**
-     * @var Context[]
+     * @var string
      */
-    private $contexts = [];
+    private $path;
+
 
     public function __construct(string $path)
     {
-        $this->read($path);
+        $this->path = $path;
     }
 
-    private function read(string $path)
+    private function findContexts(string $path): Generator
     {
         $paths = [
             $path,
@@ -29,11 +31,14 @@ class BehatConfig
             }
 
             $contents = Yaml::parseFile($path);
-            $this->parseContexts($contents);
+            if (empty($contents)) {
+                continue;
+            }
+            yield from $this->parseContexts($contents);
         }
     }
 
-    private function parseContexts(array $config)
+    private function parseContexts(array $config): Generator
     {
         foreach ($config as $profile) {
             if (!isset($profile['suites'])) {
@@ -50,7 +55,7 @@ class BehatConfig
                         $context = key($context);
                     }
 
-                    $this->contexts[] = new Context($suiteName, $context);
+                    yield new Context($suiteName, $context);
                 }
             }
         }
@@ -61,6 +66,10 @@ class BehatConfig
      */
     public function contexts(): array
     {
-        return $this->contexts;
+        $contexts = [];
+        foreach ($this->findContexts($this->path) as $context) {
+            $contexts[] = $context;
+        }
+        return $contexts;
     }
 }

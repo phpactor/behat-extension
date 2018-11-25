@@ -5,8 +5,9 @@ Behat Extension
 
 Behat integration with Phpactor.
 
-Currently experimental, supports basic feature completion based on all
-contexts found in `behat.yml` or `behat.yml.dist`.
+Features:
+
+- [x] Step completion/suggestions in feature files.
 
 TODO:
 
@@ -18,6 +19,26 @@ TODO:
 Installation
 ------------
 
+This is an experimental repository, add it to your Phpactor extension file
+manually (e.g. `$HOME/.vim/plugged/phpactor/extensions.json`):
+
+```
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/phpactor/behat-extension"
+        }
+    ],
+    "minimum-stability": "dev"
+```
+
 ```
 $ phpactor extension:install phpactor/behat-extension
+```
+
+You will then need to let VIM know that it can use Phpactor in `feature`
+(`cucumber`) files:
+
+```
+autocmd FileType cucumber setlocal omnifunc=phpactor#Complete
 ```
