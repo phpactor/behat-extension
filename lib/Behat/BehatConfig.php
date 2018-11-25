@@ -19,12 +19,19 @@ class BehatConfig
 
     private function read(string $path)
     {
-        if (!file_exists($path)) {
-            return;
-        }
+        $paths = [
+            $path,
+            $path . '.dist'
+        ];
 
-        $contents = Yaml::parseFile($path);
-        $this->parseContexts($contents);
+        foreach ($paths as $path) {
+            if (!file_exists($path)) {
+                continue;
+            }
+
+            $contents = Yaml::parseFile($path);
+            $this->parseContexts($contents);
+        }
     }
 
     private function parseContexts(array $config)
@@ -35,7 +42,15 @@ class BehatConfig
             }
 
             foreach ($profile['suites'] as $suiteName => $suite) {
-                foreach ($suite['contexts'] as $context) {
+                if (!isset($suite['contexts'])) {
+                    continue;
+                }
+                foreach ($suite['contexts'] as $key => $context) {
+                    // note this isn't tested
+                    if (is_array($context)) {
+                        $context = key($context);
+                    }
+
                     $this->contexts[] = new Context($suiteName, $context);
                 }
             }
