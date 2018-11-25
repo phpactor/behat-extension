@@ -4,7 +4,6 @@ namespace Phpactor\Extension\Behat\Tests\Integration\Completor;
 
 use PHPUnit\Framework\TestCase;
 use Phpactor\Completion\Core\Completor;
-use Phpactor\Completion\Core\Suggestion;
 use Phpactor\Container\PhpactorContainer;
 use Phpactor\Extension\Behat\BehatExtension;
 use Phpactor\Extension\ClassToFile\ClassToFileExtension;
@@ -32,7 +31,7 @@ class FeatureStepCompletorTest extends TestCase
 
     public function provideComplete()
     {
-        yield 'all' => [ 
+        yield 'all' => [
             <<<'EOT'
 Feature: Foobar
 
@@ -53,7 +52,7 @@ EOT
             ]
         ];
 
-        yield 'partial match' => [ 
+        yield 'partial match' => [
             <<<'EOT'
 Feature: Foobar
 

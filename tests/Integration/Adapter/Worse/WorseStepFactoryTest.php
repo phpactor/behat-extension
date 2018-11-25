@@ -23,7 +23,5 @@ class WorseStepFactoryTest extends TestCase
             new Step($context, 'givenThatThis', 'that I visit Berlin'),
             new Step($context, 'shouldRun', 'I should run to Weisensee'),
         ], $steps);
-
-
     }
 }

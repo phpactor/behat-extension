@@ -6,7 +6,6 @@ use Generator;
 use Phpactor\Completion\Core\Completor;
 use Phpactor\Completion\Core\Suggestion;
 use Phpactor\Extension\Behat\Behat\Step;
-use Phpactor\Extension\Behat\Behat\StepFactory;
 use Phpactor\Extension\Behat\Behat\StepGenerator;
 use Phpactor\Extension\Behat\Behat\StepParser;
 use Phpactor\Extension\Behat\Behat\StepScorer;
@@ -79,8 +78,14 @@ class FeatureStepCompletor implements Completor
     {
         $length = 0;
         $last = '';
-        foreach (preg_split('/$(\R?^)/m', $source, null, PREG_SPLIT_OFFSET_CAPTURE) as $line) {
+        $lines = preg_split('/$(\R?^)/m', $source, null, PREG_SPLIT_OFFSET_CAPTURE);
+        if (false === $lines) {
+            return $source;
+        }
+
+        foreach ($lines as $line) {
             [ $line, $offset] = $line;
+            $offset = (int) $offset;
 
             if ($offset + strlen($line) >= $byteOffset) {
                 return $line;

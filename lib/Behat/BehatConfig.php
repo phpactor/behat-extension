@@ -2,7 +2,6 @@
 
 namespace Phpactor\Extension\Behat\Behat;
 
-use RuntimeException;
 use Symfony\Component\Yaml\Yaml;
 
 class BehatConfig
