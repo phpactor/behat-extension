@@ -13,12 +13,12 @@
 
     "require": {
         "phpactor/container": "^1.0",
-        "phpactor/completion": "^1.0@dev",
-        "phpactor/file-path-resolver-extension": "dev-master",
-        "phpactor/worse-reflection-extension": "dev-master",
+        "phpactor/completion": "~0.1",
+        "phpactor/file-path-resolver-extension": "~0.1",
+        "phpactor/worse-reflection-extension": "~0.1",
         "behat/gherkin": "^4.5",
-        "phpactor/completion-extension": "^1.0@dev",
-        "symfony/yaml": "^4.1"
+        "phpactor/completion-extension": "~0.1",
+        "symfony/yaml": "^4.0|^3.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.10.5",
@@ -38,6 +38,6 @@
         }
     },
     "extra": {
-        "phpactor.extension_class": "Phpactor\\Extension\\Behat\\Behat ExtensionExtension"
+        "phpactor.extension_class": "Phpactor\\Extension\\Behat\\BehatExtension"
     }
 }

@@ -32,7 +32,7 @@ class FeatureStepCompletorTest extends TestCase
 
     public function provideComplete()
     {
-        yield [ 
+        yield 'all' => [ 
             <<<'EOT'
 Feature: Foobar
 
@@ -53,6 +53,22 @@ EOT
             ]
         ];
 
+        yield 'partial match' => [ 
+            <<<'EOT'
+Feature: Foobar
+
+    Scenario: Hello
+        Given that I visit<>
+EOT
+            , [
+                [
+                    'type' => 'snippet',
+                    'name' => ' Berlin',
+                    'label' => 'that I visit Berlin',
+                    'short_description' => ExampleContext::class
+                ],
+            ]
+        ];
     }
 
     private function completor(): Completor
@@ -71,6 +87,6 @@ EOT
         ]);
         
         
-        return $container->get('completion.completor');
+        return $container->get(CompletionExtension::SERVICE_REGISTRY)->completorForType('cucumber');
     }
 }

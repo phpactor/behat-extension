@@ -12,6 +12,7 @@ use Phpactor\Extension\Behat\Behat\StepParser;
 use Phpactor\Extension\Behat\Completor\FeatureStepCompletor;
 use Phpactor\Extension\Completion\CompletionExtension;
 use Phpactor\Extension\WorseReflection\WorseReflectionExtension;
+use Phpactor\FilePathResolverExtension\FilePathResolverExtension;
 use Phpactor\MapResolver\Resolver;
 
 class BehatExtension implements Extension
@@ -33,17 +34,24 @@ class BehatExtension implements Extension
             return new StepGenerator(
                 $container->get('behat.config'),
                 $container->get('behat.step_factory'),
-                new StepParser()
+                $container->get('behat.step_parser')
             );
         });
 
+        $container->register('behat.step_parser', function (Container $container) {
+            return new StepParser();
+        });
+
         $container->register('behat.config', function (Container $container) {
-            return new BehatConfig($container->getParameter(self::PARAM_CONFIG_PATH));
+            return new BehatConfig($container->get(FilePathResolverExtension::SERVICE_FILE_PATH_RESOLVER)->resolve($container->getParameter(self::PARAM_CONFIG_PATH)));
         });
 
         $container->register('behat.completion.feature_step_completor', function (Container $container) {
-            return new FeatureStepCompletor($container->get('behat.step_generator'));
-        }, [ CompletionExtension::TAG_COMPLETOR => [] ]);
+            return new FeatureStepCompletor(
+                $container->get('behat.step_generator'),
+                $container->get('behat.step_parser')
+            );
+        }, [ CompletionExtension::TAG_COMPLETOR => [ CompletionExtension::KEY_COMPLETOR_TYPES => [ 'cucumber' ]]]);
     }
 
     /**

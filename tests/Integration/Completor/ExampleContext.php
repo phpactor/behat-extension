@@ -17,5 +17,12 @@ class ExampleContext
     public function shouldRun()
     {
     }
+
+    /**
+     * @Then my name is :name and I live in :city
+     */
+    public function myNameIs()
+    {
+    }
 }
 
