@@ -3,7 +3,6 @@
 namespace Phpactor\Extension\Behat\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Phpactor\ClassFileConverter\Domain\ClassToFileFileToClass;
 use Phpactor\Container\PhpactorContainer;
 use Phpactor\Extension\Behat\BehatExtension;
 use Phpactor\Extension\ClassToFile\ClassToFileExtension;

@@ -5,7 +5,6 @@ namespace Phpactor\Extension\Behat\Tests\Unit\ReferenceFinder;
 use PHPUnit\Framework\TestCase;
 use Phpactor\Extension\Behat\Behat\Context;
 use Phpactor\Extension\Behat\Behat\Step;
-use Phpactor\Extension\Behat\Behat\StepFactory;
 use Phpactor\Extension\Behat\Behat\StepGenerator;
 use Phpactor\Extension\Behat\Behat\StepParser;
 use Phpactor\Extension\Behat\ReferenceFinder\StepDefinitionLocator;

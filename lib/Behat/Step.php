@@ -39,8 +39,7 @@ class Step
         string $pattern,
         string $path,
         int $startByteOffset
-    )
-    {
+    ) {
         $this->context = $context;
         $this->method = $method;
         $this->pattern = $pattern;
