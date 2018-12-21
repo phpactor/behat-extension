@@ -1,5 +1,4 @@
-Feature: Hello
+Feature: Example Feature
 
-    Scenario: Foobar
-
-        Given: :so
+    Scenario: Some Scenario
+        Given that I visit Berlin

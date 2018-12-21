@@ -71,6 +71,6 @@ class StepScorerTest extends TestCase
     private function createStep(string $string)
     {
         $context = new Context('foo', 'bar');
-        return new Step($context, 'foo', $string);
+        return new Step($context, 'foo', $string, 'path/to.php', 1);
     }
 }

@@ -39,7 +39,13 @@ class WorseStepFactory implements StepFactory
                 }
 
                 foreach ($steps as $step) {
-                    yield new Step($context, $method->name(), $step);
+                    yield new Step(
+                        $context,
+                        $method->name(),
+                        $step,
+                        $class->sourceCode()->path(),
+                        $method->position()->fullStart()
+                    );
                 }
             }
         }

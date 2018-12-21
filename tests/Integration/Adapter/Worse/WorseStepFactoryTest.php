@@ -7,21 +7,25 @@ use Phpactor\Extension\Behat\Adapter\Worse\WorseStepFactory;
 use Phpactor\Extension\Behat\Behat\Context;
 use Phpactor\Extension\Behat\Behat\Step;
 use Phpactor\Extension\Behat\Behat\StepParser;
+use Phpactor\WorseReflection\Core\SourceCode;
 use Phpactor\WorseReflection\ReflectorBuilder;
 
 class WorseStepFactoryTest extends TestCase
 {
     public function testGeneratesSteps()
     {
-        $reflector = ReflectorBuilder::create()->addSource(file_get_contents(__DIR__ . '/TestContext.php'))->build();
+        $path = __DIR__ . '/TestContext.php';
+        $reflector = ReflectorBuilder::create()->addSource(
+            SourceCode::fromPathAndString($path, file_get_contents($path))
+        )->build();
         $stepGenerator = new WorseStepFactory($reflector);
         $parser = new StepParser();
-        $context = new Context('default', TestContext::class);
+        $context = new Context('default', TestContext::class, '/path/to.php');
         $steps = iterator_to_array($stepGenerator->generate($parser, [ $context ]));
 
         $this->assertEquals([
-            new Step($context, 'givenThatThis', 'that I visit Berlin'),
-            new Step($context, 'shouldRun', 'I should run to Weisensee'),
+            new Step($context, 'givenThatThis', 'that I visit Berlin', $path, 95),
+            new Step($context, 'shouldRun', 'I should run to Weisensee', $path, 193),
         ], $steps);
     }
 }
