@@ -39,6 +39,9 @@
         }
     },
     "extra": {
-        "phpactor.extension_class": "Phpactor\\Extension\\Behat\\BehatExtension"
+        "phpactor.extension_class": "Phpactor\\Extension\\Behat\\BehatExtension",
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
     }
 }
