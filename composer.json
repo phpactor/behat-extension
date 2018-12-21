@@ -17,6 +17,7 @@
         "phpactor/file-path-resolver-extension": "~0.1",
         "phpactor/worse-reflection-extension": "~0.1",
         "behat/gherkin": "^4.5",
+        "behat/behat": "^3.5",
         "phpactor/completion-extension": "~0.1",
         "symfony/yaml": "^4.0|^3.0",
         "phpactor/reference-finder-extension": "^0.1.0@dev"
@@ -25,7 +26,6 @@
         "phpstan/phpstan": "^0.10.5",
         "phpunit/phpunit": "^7.3",
         "friendsofphp/php-cs-fixer": "^2.13",
-        "behat/behat": "^3.5",
         "phpactor/test-utils": "^1.0"
     },
     "autoload": {
