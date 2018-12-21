@@ -81,7 +81,7 @@ EOT
             ComposerAutoloaderExtension::class,
             LoggingExtension::class,
         ], [
-            FilePathResolverExtension::PARAM_APPLICATION_ROOT => __DIR__ . '/../..',
+            FilePathResolverExtension::PARAM_APPLICATION_ROOT => __DIR__ . '/../../..',
             BehatExtension::PARAM_CONFIG_PATH => __DIR__ .'/behat.yml',
         ]);
         
