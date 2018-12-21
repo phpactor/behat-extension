@@ -10,29 +10,16 @@ Behat integration with Phpactor.
 Features:
 
 - [x] Basic step completion/suggestions in feature files.
+- [x] Jump to step definition.
 
-TODO:
+Not featured:
 
-- [ ] Jumping to step definitions and vice-versa
 - [ ] Replace entire sentences (currently suggestions are either appended to
       the existing text or, if there is an initial match, completed after the
       match).
 
 Installation
 ------------
-
-This is an experimental repository, add it to your Phpactor extension file
-manually (e.g. `$HOME/.vim/plugged/phpactor/extensions.json`):
-
-```
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/phpactor/behat-extension"
-        }
-    ],
-    "minimum-stability": "dev"
-```
 
 ```
 $ phpactor extension:install phpactor/behat-extension
