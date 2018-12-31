@@ -13,6 +13,8 @@ use Phpactor\Extension\Logger\LoggingExtension;
 use Phpactor\Extension\WorseReflection\WorseReflectionExtension;
 use Phpactor\FilePathResolverExtension\FilePathResolverExtension;
 use Phpactor\TestUtils\ExtractOffset;
+use Phpactor\TextDocument\ByteOffset;
+use Phpactor\TextDocument\TextDocumentBuilder;
 
 class FeatureStepCompletorTest extends TestCase
 {
@@ -22,7 +24,10 @@ class FeatureStepCompletorTest extends TestCase
     public function testComplete(string $source, array $expected)
     {
         [$source, $offset] = ExtractOffset::fromSource($source);
-        $suggestions = iterator_to_array($this->completor()->complete($source, $offset));
+        $suggestions = iterator_to_array($this->completor()->complete(
+            TextDocumentBuilder::create($source)->language('gherkin')->build(),
+            ByteOffset::fromInt($offset)
+        ));
 
         foreach ($expected as $index => $expectation) {
             $this->assertArraySubset($expectation, $suggestions[$index]->toArray());

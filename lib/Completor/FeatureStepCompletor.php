@@ -9,6 +9,8 @@ use Phpactor\Extension\Behat\Behat\Step;
 use Phpactor\Extension\Behat\Behat\StepGenerator;
 use Phpactor\Extension\Behat\Behat\StepParser;
 use Phpactor\Extension\Behat\Behat\StepScorer;
+use Phpactor\TextDocument\ByteOffset;
+use Phpactor\TextDocument\TextDocument;
 
 class FeatureStepCompletor implements Completor
 {
@@ -37,9 +39,9 @@ class FeatureStepCompletor implements Completor
     /**
      * {@inheritDoc}
      */
-    public function complete(string $source, int $byteOffset): Generator
+    public function complete(TextDocument $source, ByteOffset $byteOffset): Generator
     {
-        $currentLine = $this->lineForOffset($source, $byteOffset);
+        $currentLine = $this->lineForOffset($source->__toString(), $byteOffset->toInt());
         $parsed = $this->parser->parseSteps($currentLine);
 
         if (empty($parsed)) {
