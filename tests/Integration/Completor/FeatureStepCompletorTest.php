@@ -23,10 +23,10 @@ class FeatureStepCompletorTest extends TestCase
      */
     public function testComplete(string $source, array $expected)
     {
-        [$source, $offset] = ExtractOffset::fromSource($source);
+        [$source, $start, $end] = ExtractOffset::fromSource($source);
         $suggestions = iterator_to_array($this->completor()->complete(
             TextDocumentBuilder::create($source)->language('gherkin')->build(),
-            ByteOffset::fromInt($offset)
+            ByteOffset::fromInt($end)
         ));
 
         foreach ($expected as $index => $expectation) {
@@ -41,18 +41,20 @@ class FeatureStepCompletorTest extends TestCase
 Feature: Foobar
 
     Scenario: Hello
-        Given <>
+        Given <><>
 EOT
             , [
                 [
                     'type' => 'snippet',
                     'name' => 'that I visit Berlin',
-                    'short_description' => ExampleContext::class
+                    'short_description' => ExampleContext::class,
+                    'range' => [ 51, 51],
                 ],
                 [
                     'type' => 'snippet',
                     'name' => 'I should run to Weisensee',
-                    'short_description' => ExampleContext::class
+                    'short_description' => ExampleContext::class,
+                    'range' => [ 51, 51],
                 ],
             ]
         ];
@@ -62,14 +64,15 @@ EOT
 Feature: Foobar
 
     Scenario: Hello
-        Given that I visit<>
+        Given <>that I visit<>
 EOT
             , [
                 [
                     'type' => 'snippet',
                     'name' => ' Berlin',
                     'label' => 'that I visit Berlin',
-                    'short_description' => ExampleContext::class
+                    'short_description' => ExampleContext::class,
+                    'range' => [ 51, 63],
                 ],
             ]
         ];

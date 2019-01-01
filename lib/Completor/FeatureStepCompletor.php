@@ -4,6 +4,7 @@ namespace Phpactor\Extension\Behat\Completor;
 
 use Generator;
 use Phpactor\Completion\Core\Completor;
+use Phpactor\Completion\Core\Range;
 use Phpactor\Completion\Core\Suggestion;
 use Phpactor\Extension\Behat\Behat\Step;
 use Phpactor\Extension\Behat\Behat\StepGenerator;
@@ -58,8 +59,6 @@ class FeatureStepCompletor implements Completor
             });
         }
 
-
-
         /** @var Step $step */
         foreach ($steps as $step) {
             $suggestion = $step->pattern();
@@ -68,10 +67,16 @@ class FeatureStepCompletor implements Completor
                 $suggestion = substr($suggestion, strlen($partial));
             }
 
+            $startOffset = $byteOffset->toInt() - strlen($partial);
+
             yield Suggestion::createWithOptions($suggestion, [
                 'label' => $step->pattern(),
                 'short_description' => $step->context()->class(),
                 'type' => Suggestion::TYPE_SNIPPET,
+                'range' => Range::fromStartAndEnd(
+                    $startOffset,
+                    $startOffset + strlen($partial)
+                )
             ]);
         }
     }

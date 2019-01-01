@@ -9,14 +9,8 @@ Behat integration with Phpactor.
 
 Features:
 
-- [x] Basic step completion/suggestions in feature files.
+- [x] Step completion/suggestions in feature files.
 - [x] Jump to step definition.
-
-Not featured:
-
-- [ ] Replace entire sentences (currently suggestions are either appended to
-      the existing text or, if there is an initial match, completed after the
-      match).
 
 Installation
 ------------
