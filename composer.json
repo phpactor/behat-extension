@@ -20,7 +20,7 @@
         "behat/behat": "^3.5",
         "phpactor/completion-extension": "~0.1",
         "symfony/yaml": "^4.0|^3.0",
-        "phpactor/reference-finder-extension": "^0.1.0@dev"
+        "phpactor/reference-finder-extension": "~0.1"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.10.5",
