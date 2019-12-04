@@ -69,7 +69,7 @@ EOT
         $offset = ByteOffset::fromInt($offset);
 
         $location = $this->locator->locateDefinition($document, $offset);
-        $this->assertEquals(self::EXAMPLE_PATH, $location->uri());
+        $this->assertEquals(self::EXAMPLE_PATH, $location->uri()->path());
         $this->assertEquals(self::EXAMPLE_OFFSET, $location->offset()->toInt());
     }
 

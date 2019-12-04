@@ -28,7 +28,7 @@ class BehatExtensionTest extends TestCase
             ComposerAutoloaderExtension::class,
             LoggingExtension::class,
         ], [
-            'file_path_resolver.application_root' => __DIR__ . '/../tests/Integration/Completion',
+            FilePathResolverExtension::PARAM_APPLICATION_ROOT => __DIR__ . '/../../',
             BehatExtension::PARAM_CONFIG_PATH => __DIR__ .'/../Integration/Completor/behat.yml',
         ]);
 
