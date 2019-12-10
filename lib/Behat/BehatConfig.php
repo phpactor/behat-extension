@@ -12,7 +12,6 @@ class BehatConfig
      */
     private $path;
 
-
     public function __construct(string $path)
     {
         $this->path = $path;
@@ -30,12 +29,25 @@ class BehatConfig
                 continue;
             }
 
-            $contents = Yaml::parseFile($path);
-            if (empty($contents)) {
-                continue;
-            }
-            yield from $this->parseContexts($contents);
+            yield from $this->readConfig($path);
         }
+    }
+
+    private function readConfig(string $path): Generator
+    {
+        $contents = Yaml::parseFile($path);
+
+        if (empty($contents)) {
+            return;
+        }
+
+        if (isset($contents['imports'])) {
+            foreach ((array)$contents['imports'] as $importPath) {
+                yield from $this->readConfig(dirname($this->path) . '/' . $importPath);
+            }
+        }
+
+        yield from $this->parseContexts($contents);
     }
 
     private function parseContexts(array $config): Generator
