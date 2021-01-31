@@ -28,7 +28,7 @@ class StepDefinitionLocatorTest extends TestCase
      */
     private $generator;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->generator = $this->prophesize(StepGenerator::class);
         $this->locator = new StepDefinitionLocator(
