@@ -24,7 +24,7 @@ class BehatExtension implements Extension
     /**
      * {@inheritDoc}
      */
-    public function load(ContainerBuilder $container)
+    public function load(ContainerBuilder $container): void
     {
         $container->register('behat.step_factory', function (Container $container) {
             return new WorseStepFactory(
@@ -63,7 +63,7 @@ class BehatExtension implements Extension
     /**
      * {@inheritDoc}
      */
-    public function configure(Resolver $schema)
+    public function configure(Resolver $schema): void
     {
         $schema->setDefaults([
             self::PARAM_CONFIG_PATH => '%project_root%/behat.yml',
