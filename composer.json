@@ -21,7 +21,8 @@
         "phpactor/completion-extension": "~0.1",
         "symfony/yaml": "^4.3 || ^5.1",
         "phpactor/reference-finder-extension": "~0.1",
-        "php": "^7.3"
+        "php": "^7.3",
+        "dms/phpunit-arraysubset-asserts": "^0.2.1"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12.0",

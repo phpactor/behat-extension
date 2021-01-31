@@ -2,6 +2,7 @@
 
 namespace Phpactor\Extension\Behat\Tests\Integration\Completor;
 
+use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 use PHPUnit\Framework\TestCase;
 use Phpactor\Completion\Core\Completor;
 use Phpactor\Container\PhpactorContainer;
@@ -18,6 +19,8 @@ use Phpactor\TextDocument\TextDocumentBuilder;
 
 class FeatureStepCompletorTest extends TestCase
 {
+    use ArraySubsetAsserts;
+
     /**
      * @dataProvider provideComplete
      */
