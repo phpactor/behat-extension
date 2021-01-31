@@ -79,6 +79,8 @@ class FeatureStepCompletor implements Completor
                 )
             ]);
         }
+
+        return false;
     }
 
     private function lineForOffset(string $source, int $byteOffset): string
