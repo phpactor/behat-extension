@@ -1,0 +1,102 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Adapter\\\\Worse\\\\WorseStepFactory\\:\\:generate\\(\\) return type has no value type specified in iterable type Generator\\.$#"
+			count: 1
+			path: lib/Adapter/Worse/WorseStepFactory.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\BehatConfig\\:\\:findContexts\\(\\) return type has no value type specified in iterable type Generator\\.$#"
+			count: 1
+			path: lib/Behat/BehatConfig.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\BehatConfig\\:\\:readConfig\\(\\) return type has no value type specified in iterable type Generator\\.$#"
+			count: 1
+			path: lib/Behat/BehatConfig.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\BehatConfig\\:\\:parseContexts\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/Behat/BehatConfig.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\BehatConfig\\:\\:parseContexts\\(\\) return type has no value type specified in iterable type Generator\\.$#"
+			count: 1
+			path: lib/Behat/BehatConfig.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\Step\\:\\:matches\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: lib/Behat/Step.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepFactory\\:\\:generate\\(\\) has parameter \\$contexts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/Behat/StepFactory.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepFactory\\:\\:generate\\(\\) return type has no value type specified in iterable type Generator\\.$#"
+			count: 1
+			path: lib/Behat/StepFactory.php
+
+		-
+			message: "#^Class Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepGenerator implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: lib/Behat/StepGenerator.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepGenerator\\:\\:getIterator\\(\\) return type has no value type specified in iterable type Traversable\\<mixed, mixed\\>\\.$#"
+			count: 1
+			path: lib/Behat/StepGenerator.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepParser\\:\\:parseSteps\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: lib/Behat/StepParser.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepParser\\:\\:extractSteps\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: lib/Behat/StepParser.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepParser\\:\\:extractSteps\\(\\) has parameter \\$keywords with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/Behat/StepParser.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepScorer\\:\\:scoreSteps\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: lib/Behat/StepScorer.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepScorer\\:\\:scoreSteps\\(\\) has parameter \\$partial with no typehint specified\\.$#"
+			count: 1
+			path: lib/Behat/StepScorer.php
+
+		-
+			message: "#^Property Phpactor\\\\Extension\\\\Behat\\\\Completor\\\\FeatureStepCompletor\\:\\:\\$generator type has no value type specified in iterable type Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepGenerator\\.$#"
+			count: 1
+			path: lib/Completor/FeatureStepCompletor.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\Completor\\\\FeatureStepCompletor\\:\\:__construct\\(\\) has parameter \\$generator with no value type specified in iterable type Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepGenerator\\.$#"
+			count: 1
+			path: lib/Completor/FeatureStepCompletor.php
+
+		-
+			message: "#^Property Phpactor\\\\Extension\\\\Behat\\\\ReferenceFinder\\\\StepDefinitionLocator\\:\\:\\$generator type has no value type specified in iterable type Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepGenerator\\.$#"
+			count: 1
+			path: lib/ReferenceFinder/StepDefinitionLocator.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\ReferenceFinder\\\\StepDefinitionLocator\\:\\:__construct\\(\\) has parameter \\$generator with no value type specified in iterable type Phpactor\\\\Extension\\\\Behat\\\\Behat\\\\StepGenerator\\.$#"
+			count: 1
+			path: lib/ReferenceFinder/StepDefinitionLocator.php
+
+		-
+			message: "#^Method Phpactor\\\\Extension\\\\Behat\\\\ReferenceFinder\\\\StepDefinitionLocator\\:\\:findStep\\(\\) has parameter \\$line with no typehint specified\\.$#"
+			count: 1
+			path: lib/ReferenceFinder/StepDefinitionLocator.php
+

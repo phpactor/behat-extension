@@ -2,7 +2,6 @@
 
 namespace Phpactor\Extension\Behat\Tests\Integration\Behat;
 
-use PHPUnit\Framework\TestCase;
 use Phpactor\Extension\Behat\Behat\BehatConfig;
 use Phpactor\Extension\Behat\Behat\Context;
 use Phpactor\Extension\Behat\Tests\IntegrationTestCase;
@@ -22,7 +21,9 @@ class BehatConfigTest extends IntegrationTestCase
 
     public function testReturnsContexts()
     {
-        $this->workspace()->put('behat.yml', <<<'EOT'
+        $this->workspace()->put(
+            'behat.yml',
+            <<<'EOT'
 default:
     suites:
         default:
@@ -43,7 +44,9 @@ EOT
 
     public function testReturnsContextsFromImportedFiles()
     {
-        $this->workspace()->put('one.yml', <<<'EOT'
+        $this->workspace()->put(
+            'one.yml',
+            <<<'EOT'
 default:
     suites:
         default:
@@ -52,7 +55,9 @@ default:
                 - Two
 EOT
         );
-        $this->workspace()->put('two.yml', <<<'EOT'
+        $this->workspace()->put(
+            'two.yml',
+            <<<'EOT'
 default:
     suites:
         default:
@@ -61,7 +66,9 @@ default:
                 - Four
 EOT
         );
-        $this->workspace()->put('behat.yml', <<<'EOT'
+        $this->workspace()->put(
+            'behat.yml',
+            <<<'EOT'
 imports:
     - one.yml
     - two.yml
@@ -75,13 +82,19 @@ EOT
 
     public function testDoesNotReturnContextsFromImportedFilesWithNoContexts()
     {
-        $this->workspace()->put('one.yml', <<<'EOT'
+        $this->workspace()->put(
+            'one.yml',
+            <<<'EOT'
 EOT
         );
-        $this->workspace()->put('two.yml', <<<'EOT'
+        $this->workspace()->put(
+            'two.yml',
+            <<<'EOT'
 EOT
         );
-        $this->workspace()->put('behat.yml', <<<'EOT'
+        $this->workspace()->put(
+            'behat.yml',
+            <<<'EOT'
 imports:
     - one.yml
     - two.yml
