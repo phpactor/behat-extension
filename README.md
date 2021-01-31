@@ -1,7 +1,7 @@
 Behat Extension
 ===============
 
-[![Build Status](https://travis-ci.org/phpactor/behat-extension.svg?branch=master)](https://travis-ci.org/phpactor/behat-extension)
+![CI](https://github.com/phpactor/behat-extension/workflows/CI/badge.svg)
 
 Behat integration with Phpactor.
 
