@@ -46,7 +46,7 @@ class FeatureStepCompletor implements Completor
         $parsed = $this->parser->parseSteps($currentLine);
 
         if (empty($parsed)) {
-            return;
+            return false;
         }
         $partial = $parsed[0];
 
