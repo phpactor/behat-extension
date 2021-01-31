@@ -20,7 +20,7 @@
         "behat/behat": "^3.5",
         "phpactor/completion-extension": "^0.2.4",
         "symfony/yaml": "^4.3 || ^5.1",
-        "phpactor/reference-finder-extension": "dev-maestro-php8",
+        "phpactor/reference-finder-extension": "^0.1.7",
         "php": "^7.3 || ^8.0",
         "dms/phpunit-arraysubset-asserts": "^0.2.1"
     },
