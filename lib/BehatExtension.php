@@ -91,5 +91,9 @@ class BehatExtension implements Extension
             self::PARAM_CONFIG_PATH => '%project_root%/behat.yml',
             self::PARAM_SYMFONY_XML_PATH => null,
         ]);
+        $schema->setDescriptions([
+            self::PARAM_CONFIG_PATH => 'Path to the main behat.yml (including the filename behat.yml)',
+            self::PARAM_SYMFONY_XML_PATH => 'If using Symfony, set this path to the XML container dump to find contexts which are defined as services',
+        ]);
     }
 }

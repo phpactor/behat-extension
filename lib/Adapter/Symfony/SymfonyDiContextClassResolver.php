@@ -47,7 +47,8 @@ class SymfonyDiContextClassResolver implements ContextClassResolver
 
         if (!file_exists($this->xmlPath)) {
             throw new RuntimeException(sprintf(
-                'Symfony DI XML file "%s" does not exist', $this->xmlPath
+                'Symfony DI XML file "%s" does not exist',
+                $this->xmlPath
             ));
         }
         $dom = new DOMDocument('1.0');
