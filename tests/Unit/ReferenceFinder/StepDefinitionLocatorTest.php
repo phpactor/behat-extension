@@ -11,9 +11,12 @@ use Phpactor\Extension\Behat\ReferenceFinder\StepDefinitionLocator;
 use Phpactor\TestUtils\ExtractOffset;
 use Phpactor\TextDocument\ByteOffset;
 use Phpactor\TextDocument\TextDocumentBuilder;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class StepDefinitionLocatorTest extends TestCase
 {
+    use ProphecyTrait;
+
     const EXAMPLE_PATH = '/path/to.php';
     const EXAMPLE_OFFSET = 6666;
 

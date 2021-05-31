@@ -5,6 +5,7 @@ namespace Phpactor\Extension\Behat;
 use Phpactor\Container\Container;
 use Phpactor\Container\ContainerBuilder;
 use Phpactor\Container\Extension;
+use Phpactor\Extension\Behat\Adapter\Symfony\SymfonyDiContextClassResolver;
 use Phpactor\Extension\Behat\Adapter\Worse\WorseContextClassResolver;
 use Phpactor\Extension\Behat\Adapter\Worse\WorseStepFactory;
 use Phpactor\Extension\Behat\Behat\BehatConfig;
@@ -77,7 +78,7 @@ class BehatExtension implements Extension
             }
 
 
-            return new ChainContextClassResolver();
+            return new ChainContextClassResolver($resolvers);
         });
     }
 
