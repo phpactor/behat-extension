@@ -23,6 +23,8 @@ use Phpactor\MapResolver\Resolver;
 class BehatExtension implements Extension
 {
     const PARAM_CONFIG_PATH = 'behat.config_path';
+    const PARAM_SYMFONY_XML_PATH = 'behat.symfony.di_xml_path';
+
 
     /**
      * {@inheritDoc}
@@ -64,11 +66,18 @@ class BehatExtension implements Extension
         }, [ ReferenceFinderExtension::TAG_DEFINITION_LOCATOR => []]);
 
         $container->register(ContextClassResolver::class, function (Container $container) {
-            return new ChainContextClassResolver([
+            $resolvers = [
                 new WorseContextClassResolver(
                     $container->get(WorseReflectionExtension::SERVICE_REFLECTOR)
                 )
-            ]);
+            ];
+
+            if (null !== $symfonyXmlPath = $container->getParameter(self::PARAM_SYMFONY_XML_PATH)) {
+                $resolvers[] = new SymfonyDiContextClassResolver($symfonyXmlPath);
+            }
+
+
+            return new ChainContextClassResolver();
         });
     }
 
@@ -79,6 +88,7 @@ class BehatExtension implements Extension
     {
         $schema->setDefaults([
             self::PARAM_CONFIG_PATH => '%project_root%/behat.yml',
+            self::PARAM_SYMFONY_XML_PATH => null,
         ]);
     }
 }
