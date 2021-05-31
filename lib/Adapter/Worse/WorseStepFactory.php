@@ -4,6 +4,7 @@ namespace Phpactor\Extension\Behat\Adapter\Worse;
 
 use Generator;
 use Phpactor\Extension\Behat\Behat\Context;
+use Phpactor\Extension\Behat\Behat\ContextClassResolver;
 use Phpactor\Extension\Behat\Behat\Step;
 use Phpactor\Extension\Behat\Behat\StepFactory;
 use Phpactor\Extension\Behat\Behat\StepParser;
@@ -17,9 +18,15 @@ class WorseStepFactory implements StepFactory
      */
     private $reflector;
 
-    public function __construct(ClassReflector $reflector)
+    /**
+     * @var ContextClassResolver
+     */
+    private $contextClassResolver;
+
+    public function __construct(ClassReflector $reflector, ContextClassResolver $contextClassResolver)
     {
         $this->reflector = $reflector;
+        $this->contextClassResolver = $contextClassResolver;
     }
 
     /**
@@ -28,7 +35,7 @@ class WorseStepFactory implements StepFactory
     public function generate(StepParser $parser, array $contexts): Generator
     {
         foreach ($contexts as $context) {
-            $class = $this->reflector->reflectClass($context->class());
+            $class = $this->reflector->reflectClass($this->contextClassResolver->resolve($context->class()));
 
             /** @var ReflectionMethod $method */
             foreach ($class->methods() as $method) {

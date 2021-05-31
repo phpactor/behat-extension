@@ -5,8 +5,11 @@ namespace Phpactor\Extension\Behat;
 use Phpactor\Container\Container;
 use Phpactor\Container\ContainerBuilder;
 use Phpactor\Container\Extension;
+use Phpactor\Extension\Behat\Adapter\Worse\WorseContextClassResolver;
 use Phpactor\Extension\Behat\Adapter\Worse\WorseStepFactory;
 use Phpactor\Extension\Behat\Behat\BehatConfig;
+use Phpactor\Extension\Behat\Behat\ContextClassResolver;
+use Phpactor\Extension\Behat\Behat\ContextClassResolver\ChainContextClassResolver;
 use Phpactor\Extension\Behat\Behat\StepGenerator;
 use Phpactor\Extension\Behat\Behat\StepParser;
 use Phpactor\Extension\Behat\Completor\FeatureStepCompletor;
@@ -28,7 +31,8 @@ class BehatExtension implements Extension
     {
         $container->register('behat.step_factory', function (Container $container) {
             return new WorseStepFactory(
-                $container->get(WorseReflectionExtension::SERVICE_REFLECTOR)
+                $container->get(WorseReflectionExtension::SERVICE_REFLECTOR),
+                $container->get(ContextClassResolver::class)
             );
         });
 
@@ -58,6 +62,14 @@ class BehatExtension implements Extension
         $container->register('behat.reference_finder.step_definition_locator', function (Container $container) {
             return new StepDefinitionLocator($container->get('behat.step_generator'), $container->get('behat.step_parser'));
         }, [ ReferenceFinderExtension::TAG_DEFINITION_LOCATOR => []]);
+
+        $container->register(ContextClassResolver::class, function (Container $container) {
+            return new ChainContextClassResolver([
+                new WorseContextClassResolver(
+                    $container->get(WorseReflectionExtension::SERVICE_REFLECTOR)
+                )
+            ]);
+        });
     }
 
     /**
